@@ -1,14 +1,17 @@
 import { FC } from 'react';
 import Header from './header';
-const Layout: FC = ({children}) => {
+
+interface IPros {
+  searchGame: (name: string) => void;
+}
+
+const Layout: FC<IPros> = ({ children, searchGame }) => {
   return (
     <>
-      <Header />
-      <main className="main">
-        {children}
-      </main>
+      <Header searchGame={searchGame} />
+      <main className="main">{children}</main>
     </>
   );
-}
+};
 
 export default Layout;

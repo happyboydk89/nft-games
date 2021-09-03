@@ -3,13 +3,26 @@ import { NextPage } from 'next';
 import Image from 'next/image';
 import Layout from 'src/components/Layout';
 import { getGames } from './../lib/game';
+import { useEffect, useState } from 'react';
 
 interface IGame {
   games?: any;
 }
 
 const Home: NextPage<IGame> = ({ games }) => {
-  console.log('games', games);
+  const [db, setDb] = useState(games);
+  //console.log('games', games);
+
+  const searchGame = (name: string) => {
+    if (name) {
+      // games = games.filter((game: any) => game.name == name);
+      games = games.filter((game: any) => game.name.match(name));
+    } else {
+      //games = db;
+    }
+    console.log(games);
+    setDb(games);
+  };
 
   return (
     <>
@@ -19,9 +32,9 @@ const Home: NextPage<IGame> = ({ games }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Layout>
+      <Layout searchGame={searchGame}>
         <ul className="games">
-          {games.map((game: any) => (
+          {db.map((game: any) => (
             <li key={game.id}>
               <Image src={game.background_image} alt={game.name} width={452} height={452} />
             </li>
