@@ -580,6 +580,32 @@ a {
   background: url(/images/ico_search.svg) no-repeat right 3px center;
   background-size: 34px;
 }
+@media screen and (max-width: 767px) {
+  .header {
+    display: block;
+  }
+  .logo a {
+    text-align: center;
+  }
+  .header > .flex {
+    display: block;
+  }
+  .gnav {
+    padding: 15px 0;
+  }
+  .gnav ul {
+    justify-content: center;
+  }
+  .gnav ul li {
+    margin: 0 15px;
+  }
+  .search-box {
+    margin: 0;
+  }
+  .search-box input {
+    width: 100%;
+  }
+}
 .main {
   max-width: 85%;
   margin: 0 auto;
